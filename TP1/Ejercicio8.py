@@ -19,10 +19,10 @@ def diadelasemana(dia,mes,anio):
 
 def fecha(dia, mes, anio):
     if anio <= 0:
-        return False
+        return False,0
 
     if mes < 1 or mes > 12:
-        return False
+        return False,0
 
     if mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
         dias_mes = 31

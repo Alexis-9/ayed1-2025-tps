@@ -34,7 +34,7 @@ def ingresar_valores():
     anio = int(input("Ingrese el año: "))
 
     validar,bisiesto=fecha(dia,mes,anio)
-    if validar==True:
+    if validar:
         return dia,mes,anio,bisiesto
     else:
         print("Error, la fecha es invalida")

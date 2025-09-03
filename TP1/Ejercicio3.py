@@ -6,19 +6,18 @@ Realizar también un programa para verificar el comportamiento de la función.
 
 def gasto_subte(viajes, tarifa_max):
     if viajes <= 0:
-        return 0
-    if viajes <= 20:
-        costo_viaje = tarifa_max
+        total=0
+    elif viajes <= 20:
+        total = viajes * tarifa_max
     elif viajes <= 30:
-        costo_viaje = tarifa_max * 0.8
+        total = 20 * tarifa_max + (viajes - 20) * tarifa_max * 0.8
     elif viajes <= 40:
-        costo_viaje = tarifa_max * 0.7
+        total = 20 * tarifa_max + 10 * tarifa_max * 0.8 + (viajes - 30) * tarifa_max * 0.7
     else:
-        costo_viaje = tarifa_max * 0.6
-    total_gasto= viajes*costo_viaje
-    return total_gasto
+        total = 20 * tarifa_max + 10 * tarifa_max * 0.8 + 10 * tarifa_max * 0.7 + (viajes - 40) * tarifa_max * 0.6
+    return total
 
-tarifa = 963
+tarifa = 1031
 cantidad_viajes = int(input("Ingrese la cantidad de viajes del mes: "))
 
 total = gasto_subte(cantidad_viajes, tarifa)

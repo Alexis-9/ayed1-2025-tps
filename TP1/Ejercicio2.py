@@ -31,7 +31,7 @@ def ingresar_valores():
     mes = int(input("Ingrese el mes: "))
     anio = int(input("Ingrese el año: "))
 
-    if fecha(dia, mes, anio)==True:
+    if fecha(dia, mes, anio):
         print("La fecha es válida")
     else:
         print("La fecha NO es válida")

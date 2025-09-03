@@ -2,17 +2,25 @@
 y devuelva como valor de retorno el número que resulte de concatenar ambos
 parámetros. Por ejemplo, si recibe 1234 y 567 debe devolver 1234567. No se permite utilizar facilidades de Python no vistas en clase."""
 
-def concatenar(primero, segundo):
-    digitos = 0
-    aux = segundo
-    concatenado=0
-    while aux > 0:
-        aux = aux // 10
-        digitos += 1
-        concatenado= primero * (10 ** digitos) + segundo
+
+def concatenar(a,b):
+    digitos=0
+    sobrante=b
+    while sobrante>0:
+        sobrante = sobrante // 10
+        digitos+=1
+    concatenado=a*(10**digitos)+b
     return concatenado
 
-n1=int(input("Primer número: "))
-n2=int(input("Segundo número: "))
+def ingresar_valores():
+    n1=int(input("Primer número: "))
+    n2=int(input("Segundo número: "))
+    while n1<0 or n2<0:
+        print("Ingrese números enteros positivos")
+        n1 = int(input("Primer número: "))
+        n2 = int(input("Segundo número: "))
 
-print(concatenar(n1,n2))
+    print(concatenar(n1,n2))
+
+ingresar_valores()
+

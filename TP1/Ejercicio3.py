@@ -4,7 +4,14 @@ que reciba como parámetro la cantidad de viajes realizados en un determinado me
 Realizar también un programa para verificar el comportamiento de la función.
 """
 
-def gasto_subte(viajes, tarifa_max):
+def gasto_subte(viajes:int, tarifa_max:int)->float:
+    """
+    Calcula el gasto total en pasajes según la cantidad de viajes y sus descuentos
+    pre: viajes como número entero
+         tarifa_max como número entero
+
+    post: Devuelve el total como float
+    """
     if viajes <= 0:
         total=0
     elif viajes <= 20:

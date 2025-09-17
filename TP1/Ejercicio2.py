@@ -5,7 +5,13 @@ Devolver True o False según la fecha sea correcta o no. Realizar también un
 programa para verificar el comportamiento de la función.
 """
 
-def fecha(dia, mes, anio):
+def fecha(dia:int, mes:int, anio:int)->bool:
+    """
+    Verifica si una fecha es válida
+    pre: día, mes  y anio como números enteros
+    post: Devuelve True si la fecha es válida
+          Devuelve False si la fecha es inválida
+    """
     if anio <= 0:
         return False
 
@@ -26,7 +32,14 @@ def fecha(dia, mes, anio):
     else:
         return True
 
-def ingresar_valores():
+def ingresar_valores()->None:
+    """
+    Pide al usuario una fecha y verifica si es válida según el resultado de la función fecha
+    pre: El usuario ingresa día, mes y anio como números enteros
+    post: Imprime si la fecha es válida o inválida
+
+    """
+
     dia = int(input("Ingrese el día: "))
     mes = int(input("Ingrese el mes: "))
     anio = int(input("Ingrese el año: "))

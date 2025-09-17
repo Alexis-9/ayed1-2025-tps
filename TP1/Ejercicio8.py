@@ -4,7 +4,12 @@ Escribir un programa para imprimir por pantalla el calendario de un mes completo
 y año cualquiera basándose en la función suministrada.
 Considerar que la semana comienza en domingo"""
 
-def diadelasemana(dia,mes,anio):
+def diadelasemana(dia:int,mes:int,anio:int)->int:
+    """
+    Calcula el día de la semana para una fecha ingresada
+    pre: recibe dia, mes, anio como números enteros
+    post: Devuelve un numero del 0 al 6 que representa cada dia de la semana
+    """
     if mes<3:
         mes=mes+10
         anio=anio-1
@@ -17,7 +22,16 @@ def diadelasemana(dia,mes,anio):
         diasem = diasem+7
     return diasem
 
-def fecha(dia, mes, anio):
+def fecha(dia:int, mes:int, anio:int)->tuple[bool,int]:
+    """
+      Verifica si una fecha es válida y devuelve la cantidad de días
+      pre: dia, mes, anio como números enteros
+
+      post:
+      Devuelve una tupla (valida, dias_mes):
+          valida (bool): True si la fecha es válida, False si no
+          dias_mes (int): 31 para cualquier mes excepto para febrero que devuelve 29 si es año bisiesto o 28 si no
+      """
     if anio <= 0:
         return False,0
 
@@ -40,7 +54,16 @@ def fecha(dia, mes, anio):
         return True,dias_mes
 
 
-def calendario(dia_ingresado,mes_ingresado,anio_ingresado):
+def calendario(dia_ingresado: int, mes_ingresado: int, anio_ingresado: int) -> None:
+    """
+    Muestra un calendario del mes de una fecha ingresada, indicando el día de la semana.
+
+    pre: dia_ingresado, mes_ingresado, anio_ingresado: enteros que representan una fecha válida
+
+    post:
+    - Imprime el nombre del día de la semana para la fecha ingresada
+    - Imprime el calendario del mes con cada día acompañado de su día de la semana
+    """
     dias_semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"]
 
     valido, dias_mes = fecha(1, mes_ingresado, anio_ingresado)
@@ -50,18 +73,29 @@ def calendario(dia_ingresado,mes_ingresado,anio_ingresado):
 
     for dia in range(1,dias_mes+1):
         nombre_dia = dias_semana[diadelasemana(dia, mes_ingresado, anio_ingresado)]
-        print(f"{nombre_dia} {dia}")
+        print(f"{nombre_dia} {dia}",end="|")
         if diadelasemana(dia, mes_ingresado, anio_ingresado)==6:
             print()
 
 
-def ingesar_valores():
+def ingresar_valores():
+    """
+    Pide al usuario una fecha válida e imprime el calendario del mes correspondiente.
+
+    Pre:El usuario ingresa día, mes y anio como tres números enteros:
+
+    Post:
+    - Comprueba que la fecha sea válida
+    - Llama a la función calendario con la fecha ingresada
+    """
     dia=int(input("Ingrese un día: "))
     mes=int(input("Ingrese un mes: "))
     anio=int(input("Ingrese un año: "))
     valido, dias_mes = fecha(dia, mes, anio)
-    if not valido:
+    while not valido:
         print("Fecha inválida")
-        return
+        dia = int(input("Ingrese un día: "))
+        mes = int(input("Ingrese un mes: "))
+        anio = int(input("Ingrese un año: "))
     calendario(dia,mes,anio)
-ingesar_valores()
+ingresar_valores()

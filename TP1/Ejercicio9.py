@@ -15,7 +15,17 @@ caso contrario el camión no serán despachado por su alto costo."""
 
 import random as rn
 
-def separar_naranjas(naranjas):
+def separar_naranjas(naranjas: int) -> tuple[int, int]:
+    """
+    Separa naranjas según su peso para jugo o venta
+
+    pre: naranjas como número entero de naranjas a procesar
+
+    post:
+    Devuelve una tupla (cantidad_naranjas, cantidad_jugo):
+        cantidad_naranjas: número de naranjas cuyo peso está entre 200 y 300 g
+        cantidad_jugo: número de naranjas cuyo peso es menor a 200 g o mayor a 300 g
+    """
     cantidad_jugo = 0
     cantidad_naranjas = 0
     for i in range(naranjas):
@@ -26,14 +36,34 @@ def separar_naranjas(naranjas):
             cantidad_naranjas+=1
     return cantidad_naranjas,cantidad_jugo
 
-def llenar_cajones(cantidad_naranjas):
+def llenar_cajones(cantidad_naranjas: int) -> tuple[int, int]:
+    """
+    Distribuye naranjas en cajones de 100 unidades
+
+    pre: cantidad_naranjas como número entero de naranjas disponibles
+
+    post:
+    Devuelve una tupla (cajones, sobrantes):
+        cajones: número de cajones llenos (100 naranjas cada uno)
+        sobrantes: número de naranjas que quedan sin cajón
+    """
     cajones=0
     while cantidad_naranjas>=100:
         cajones+=1
         cantidad_naranjas-=100
     return cajones,cantidad_naranjas
 
-def llenar_camiones(cajones):
+def llenar_camiones(cajones: int) -> tuple[int, int]:
+    """
+    Distribuye cajones de naranjas en camiones, usando solo el 80% de su capacidad
+
+    pre: cajones como número entero de cajones disponibles
+
+    post:
+    Devuelve una tupla (cajones_sobrantes, camiones):
+        cajones_sobrantes: cajones que quedan sin transportar
+        camiones: número de camiones llenos al 80% de su capacidad
+    """
     camiones=0
     peso_maximo_camion=500
     peso_cajon=25
@@ -46,10 +76,32 @@ def llenar_camiones(cajones):
 
     return cajones,camiones
 
-def verificar(naranjas):
+def verificar(naranjas: int) -> bool:
+    """
+    Verifica si la cantidad de naranjas es positiva
+
+    Pre: naranjas como número entero de naranjas
+
+    Post:
+    - Devuelve True si naranjas > 0.
+    - Devuelve False si naranjas <= 0.
+    """
     return naranjas>0
 
-def ingresar_valores():
+def ingresar_valores()->None:
+    """
+    Solicita al usuario la cantidad de naranjas cosechadas y muestra un resumen
+    del procesamiento: separación para jugo, llenado de cajones y camiones
+
+    pre: El usuario ingresa un número entero positivo de naranjas
+
+    post:
+    - Imprime en pantalla:
+        Cantidad de naranjas válidas para cajones
+        Cantidad de naranjas para jugo
+        Cantidad de cajones llenados y sobrantes
+        Cantidad de camiones necesarios y cajones sobrantes por camión
+    """
     naranjas = int(input("Ingrese la cantidad de naranjas cosechadas: "))
     if verificar(naranjas):
         cantidad_naranjas, cantidad_jugo = separar_naranjas(naranjas)

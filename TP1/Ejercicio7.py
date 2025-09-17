@@ -5,7 +5,16 @@ ni agregados, desarrollar programas que permitan:
 a. Sumar N días a una fecha.
 b. Calcular la cantidad de días existentes entre dos fechas cualesquiera"""
 
-def fecha(dia, mes, anio):
+def fecha(dia:int, mes:int, anio:int)->tuple[bool,int]:
+    """
+    Verifica si una fecha es válida y si el año es bisiesto
+    pre: dia, mes, anio como números enteros
+
+    post:
+    Devuelve una tupla (valida, bisiesto):
+        valida (bool): True si la fecha es válida, False si no
+        bisiesto (int): 1 si el año es bisiesto, 0 si no lo es
+    """
     bisiesto=0
     if anio <= 0:
         return False
@@ -28,7 +37,16 @@ def fecha(dia, mes, anio):
     else:
         return True, bisiesto
 
-def ingresar_valores():
+def ingresar_valores()->tuple[int,int,int,int]:
+    """
+     Pide al usuario una fecha y devuelve la fecha validada junto con el indicador de bisiesto
+
+     pre: El usuario debe ingresar día, mes y anio como números enteros
+
+     Post:
+     - Si la fecha es válida devuelve una tupla (dia, mes, anio, bisiesto)
+     - Si la fecha es inválida, imprime un mensaje de error y vuelve a pedir los datos
+     """
     dia = int(input("Ingrese el día: "))
     mes = int(input("Ingrese el mes: "))
     anio = int(input("Ingrese el año: "))
@@ -40,7 +58,17 @@ def ingresar_valores():
         print("Error, la fecha es invalida")
         return ingresar_valores()
 
-def diasiguiente(dia, mes, anio,bisiesto):
+def diasiguiente(dia:int, mes:int, anio:int,bisiesto:int)->tuple[int,int,int]:
+    """
+    Calcula el día siguiente a una fecha dada
+
+    pre:
+    - dia, mes, anio como enteros que representan una fecha válida
+    - bisiesto: 1 si el año es bisiesto, 0 si no
+
+    post:
+    - Devuelve una tupla (dia, mes, anio) correspondiente al día siguiente
+    """
     if bisiesto==1:
         dias_mes = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     else:
@@ -56,14 +84,67 @@ def diasiguiente(dia, mes, anio,bisiesto):
     return dia, mes, anio
 
 
-def sumar_dias(dia, mes, anio,bisiesto,N):
+def sumar_dias(dia:int, mes:int, anio:int,bisiesto:int,N:int)->tuple[int,int,int]:
+    """
+    Devuelve la fecha resultante de sumar N días a una fecha dada
+
+    pre:
+    - dia, mes, anio como enteros que representan una fecha válida
+    - bisiesto: 1 si el año es bisiesto, 0 si no
+    - N: número de días a sumar
+
+    Post:
+    - Devuelve una tupla (dia, mes, anio) correspondiente a la fecha resultante después de sumar N días
+    """
     for suma in range(N):
         dia, mes, anio = diasiguiente(dia, mes, anio,bisiesto)
     return dia, mes, anio
 
-def dias_entre(fecha1, fecha2):
-    dia1, mes1, anio1,bisiesto1 = fecha1
-    dia2, mes2, anio2,bisiesto2= fecha2
+def verificar_mayor(d:int,m:int,a:int,d1:int,m2:int,a2:int)-> int:
+    """
+    Verifica entre dos fechas cual es mayor
+    pre: Dos fechas con dia, mes y año como numeros enteros
+    post: Devuelve 1 en caso de que la primer fecha sea mayor, 2 en caso de que la segunda sea mayor o 0 en caso de que sean iguales
+    """
+
+    if a > a2:
+        return 1
+    elif a < a2:
+        return 2
+    else:
+        if m > m2:
+            return 1
+        elif m < m2:
+            return 2
+        else:
+            if d > d1:
+                return 1
+            elif d < d1:
+                return 2
+            else:
+                return 0
+
+def dias_entre(fecha1: tuple[int, int, int, int], fecha2: tuple[int, int, int, int]) -> int:
+    """
+    Calcula la cantidad de días entre dos fechas.
+
+    pre:
+    - fecha1 y fecha2: tuplas (dia, mes, anio, bisiesto) que representan fechas válidas
+
+    post:
+    - Determina cual fecha es mayor
+    - Devuelve un entero que representa la cantidad de días que hay desde la primer fecha hasta la segunda
+    """
+    dia1, mes1, anio1, bisiesto1 = fecha1
+    dia2, mes2, anio2, bisiesto2 = fecha2
+
+    mayor=verificar_mayor(dia1,mes1,anio1,dia2,mes2,anio2)
+    if mayor==1:
+        dia1, mes1, anio1, bisiesto1 = fecha2
+        dia2, mes2, anio2, bisiesto2 = fecha1
+
+
+
     contador = 0
 
     while (dia1, mes1, anio1) != (dia2, mes2, anio2):
@@ -78,13 +159,30 @@ def dias_entre(fecha1, fecha2):
 
 
 
-def opciones():
+def opciones()->None:
+    """
+    Muestra una lista de opciones
+
+    pre: No recibe nada
+
+    Post: Imprime las opciones disponibles en pantalla
+
+    """
     print("1: Día siguiente a la fecha ingresada")
     print("2: Sumar días a una fecha")
     print("3: Cantidad de días entre 2 fechas")
     print("4: Salir")
 
-def menu():
+def menu()->None:
+    """
+    Muestra un menú con opciones ejecutables
+
+    Pre: El usuario ingresa una opción como string
+
+    Post:
+    - Si la opción ingresada coincide con una opción la ejecuta, si no, muestra un mensaje de error
+    - Imprime los resultados de cada función
+    """
     opciones()
     op=input("Elija una opción: ")
     while op!="4":
@@ -110,6 +208,8 @@ def menu():
 
             dias = dias_entre(fecha1,fecha2)
             print(f"Hay {dias} días entre las fechas")
+        else:
+            print("Opción incorrecta")
         print()
         op = input("Elija una opción: ")
     return "Adiós"

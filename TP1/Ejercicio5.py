@@ -7,14 +7,32 @@ Un número se define como triangular si puede expresarse como la suma de un grup
 Por ejemplo 10 es un número triangular porque se obtiene sumando 1+2+3+4.
 Ambas funciones lambda reciben como único parámetro el número a evaluar y devuelven True o False. No se permite utilizar ayudas externas a las mismas."""
 
-def es_oblongo(n):
+def es_oblongo(n:int)->bool:
+    """
+      Verifica si el número n es oblongo.
+
+      Pre:
+      - n como número entero
+
+      Post:
+      - Devuelve True si el número es oblongo
+      - Devuelve False si el número no es oblongo
+    """
     for a in range(n):
         if n == a * (a + 1):
             return True
     return False
 
 
-def es_triangular(n):
+def es_triangular(n:int)->bool:
+    """
+    Verifica si el número n es triangular
+    pre:
+    - n como número entero
+    post:
+    - Devuelve True si el número es triangular
+    - Devuelve False si el número no es triangular
+    """
     for i in range(n):
         suma = 0
         for j in range(i + 1):

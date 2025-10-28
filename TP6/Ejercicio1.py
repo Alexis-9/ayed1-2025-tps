@@ -17,6 +17,7 @@ try:
 
     while True:
         linea = arch.readline()
+
         if not linea:
             break
         else:
@@ -34,12 +35,13 @@ try:
                 italia.write(f"{apellido.title()}, {nombre.title()}\n")
 
 
+
 except FileNotFoundError as msg:
     print(f'No se encuentra el archivo: {msg}')
 except OSError as msg:
     print(f'No se puede leer el archivo: {msg}')
 else:
-    print(f'Archivo leído correctamente')
+    print(f'Archivo leído correctamente\n')
 finally:
     try:
         arch.close()
@@ -47,5 +49,16 @@ finally:
         italia.close()
         espania.close()
     except NameError:
-
         pass
+
+with open("Ej1/ARMENIA.TXT","rt",encoding="utf-8") as arm:
+    print("Los apellidos que terminan en ian: ")
+    print(arm.read())
+
+with open("Ej1/ESPAÑA.TXT","rt",encoding="utf-8") as es:
+    print("Los apellidos que terminan en ez: ")
+    print(es.read())
+with open("Ej1/ITALIA.TXT","rt",encoding="utf-8") as it:
+    print("Los apellidos que terminan en ini: ")
+    print(it.read())
+

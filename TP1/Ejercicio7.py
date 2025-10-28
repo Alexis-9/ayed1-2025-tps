@@ -17,10 +17,10 @@ def fecha(dia:int, mes:int, anio:int)->tuple[bool,int]:
     """
     bisiesto=0
     if anio <= 0:
-        return False
+        return False,0
 
     if mes < 1 or mes > 12:
-        return False
+        return False,0
 
     if mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
         dias_mes = 31
@@ -84,7 +84,7 @@ def diasiguiente(dia:int, mes:int, anio:int,bisiesto:int)->tuple[int,int,int]:
     return dia, mes, anio
 
 
-def sumar_dias(dia:int, mes:int, anio:int,bisiesto:int,N:int)->tuple[int,int,int]:
+def sumar_dias(dia:int, mes:int, anio:int,bisiesto:int,n:int)->tuple[int,int,int]:
     """
     Devuelve la fecha resultante de sumar N días a una fecha dada
 
@@ -96,7 +96,7 @@ def sumar_dias(dia:int, mes:int, anio:int,bisiesto:int,N:int)->tuple[int,int,int
     Post:
     - Devuelve una tupla (dia, mes, anio) correspondiente a la fecha resultante después de sumar N días
     """
-    for suma in range(N):
+    for suma in range(n):
         dia, mes, anio = diasiguiente(dia, mes, anio,bisiesto)
     return dia, mes, anio
 

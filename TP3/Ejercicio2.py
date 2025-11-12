@@ -143,34 +143,7 @@ def punto_g():
 
 #Punto h
 def punto_h():
-    matriz=[]
-    for i in range(n):
-        fila=[]
-        for j in range(n):
-            fila.append(0)
-        matriz.append(fila)
-
-    num = 1
-
-    for i in range(n):
-        inicio = 0
-        fin = i
-        while fin >= 0 and inicio < n:
-            matriz[inicio][fin] = num
-
-            num += 1
-            inicio += 1
-            fin -= 1
-
-    for i in range(1, n):
-        inicio = i
-        fin = n-1
-        while inicio < n and fin >= 0:
-            matriz[inicio][fin] = num
-
-            num += 1
-            inicio += 1
-            fin -= 1
+    pass
 
 
     for fila in matriz:

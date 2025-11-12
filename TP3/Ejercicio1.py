@@ -16,7 +16,19 @@ una lista con los números de las mismas.
 NOTA: El valor de N debe leerse por teclado. Las funciones deben servir cualquiera
 sea el valor ingresado."""
 
-def cargar_matriz(n):
+def cargar_matriz(n: int) -> list:
+    """
+    Carga una matriz cuadrada de tamaño n x n con valores ingresados por el usuario
+    y la muestra por pantalla.
+
+    Pre:
+    - Recibe un número entero positivo n que representa el tamaño de la matriz
+    - El usuario debe ingresar valores numéricos enteros válidos para cada posición
+
+    Post:
+    - Devuelve una matriz con los valores ingresados
+    - Muestra en pantalla la matriz completa ingresada
+    """
     matriz=[]
     for i in range(n):
         fila=[]
@@ -32,7 +44,17 @@ def cargar_matriz(n):
 
     return matriz
 
-def filas_ascendentes(matriz):
+def filas_ascendentes(matriz: list) -> None:
+    """
+    Ordena cada fila de la matriz en forma ascendente y la muestra por pantalla
+
+    Pre:
+    - Recibe una matriz con valores numéricos
+
+    Post:
+    - Muestra la matriz con sus filas ordenadas de menor a mayor
+    - No devuelve ningún valor, solo modifica el orden dentro de la matriz
+    """
     print("\nTodas las filas en orden ascendente: ")
 
     for i in range(len(matriz)):
@@ -44,7 +66,18 @@ def filas_ascendentes(matriz):
     for fila in matriz:
         print(fila)
 
-def intercambiar_filas(matriz):
+def intercambiar_filas(matriz: list) -> None:
+    """
+    Permite al usuario intercambiar dos filas de la matriz seleccionadas por su número
+
+    Pre:
+    - Recibe una matriz con al menos dos filas
+    - El usuario debe ingresar los números de fila válidos (dentro del rango existente)
+
+    Post:
+    - Intercambia las filas seleccionadas dentro de la matriz
+    - Imprime la matriz resultante con las filas ya intercambiadas
+    """
     if len(matriz)<=1:
         print("No hay filas suficientes")
         return
@@ -66,7 +99,18 @@ def intercambiar_filas(matriz):
     for fila in matriz:
         print(fila)
 
-def intercambiar_columnas(matriz):
+def intercambiar_columnas(matriz: list) -> None:
+    """
+    Permite al usuario intercambiar dos columnas de la matriz seleccionadas por su número
+
+    Pre:
+    - Recibe una matriz con al menos dos columnas
+    - El usuario debe ingresar los números de columna válidos (dentro del rango existente)
+
+    Post:
+    - Intercambia las columnas seleccionadas dentro de la matriz
+    - Imprime la matriz resultante con las columnas ya intercambiadas
+    """
     if len(matriz)<=1:
         print("No hay columnas suficientes")
         return
@@ -89,7 +133,17 @@ def intercambiar_columnas(matriz):
         print(fila)
 
 
-def trasponer_matriz(matriz):
+def trasponer_matriz(matriz: list) -> None:
+    """
+    Convierte la matriz en su traspuesta intercambiando filas por columnas
+
+    Pre:
+    - Recibe una matriz cuadrada
+
+    Post:
+    - Modifica la matriz original convirtiéndola en su traspuesta
+    - Imprime la matriz
+    """
     for i in range(len(matriz)):
         for j in range(i+1, len(matriz)):
             matriz[i][j], matriz[j][i] = matriz[j][i], matriz[i][j]
@@ -98,7 +152,18 @@ def trasponer_matriz(matriz):
     for fila in matriz:
         print(fila)
 
-def promedio_fila(matriz):
+def promedio_fila(matriz: list) -> None:
+    """
+    Calcula y muestra el promedio de los valores de una fila específica de la matriz
+
+    Pre:
+    - Recibe una matriz con al menos una fila
+    - El usuario debe ingresar un número de fila válido dentro del rango existente
+
+    Post:
+    - Muestra la fila seleccionada y su promedio calculado
+    - No devuelve nada
+    """
     if len(matriz)<1:
         print("No hay filas suficientes")
         return
@@ -121,7 +186,18 @@ def promedio_fila(matriz):
     print(matriz[nfila])
     print(f"El promedio es {promedio}")
 
-def porcentaje_impares(matriz):
+def porcentaje_impares(matriz: list) -> None:
+    """
+    Calcula y muestra el porcentaje de números impares en una columna específica de la matriz
+
+    Pre:
+    - Recibe una matriz con al menos una columna
+    - El usuario debe ingresar un número de columna válido dentro del rango existente
+
+    Post:
+    - Muestra la columna seleccionada y el porcentaje de valores impares que contiene
+    - No devuelve nada
+    """
     if len(matriz)<1:
         print("No hay columnas suficientes")
         return
@@ -148,7 +224,18 @@ def porcentaje_impares(matriz):
     print(f"La columna {ncolumna+1} es {columna}")
     print(f"Su porcentaje de impares es {porcentaje}%")
 
-def simetrica_diagonal_principal(matriz):
+def simetrica_diagonal_principal(matriz: list) -> None:
+    """
+    Verifica si la diagonal principal de la matriz es capicúa y muestra el resultado
+
+    Pre:
+    - Recibe una matriz con valores numéricos
+
+    Post:
+    - Muestra la matriz completa y su diagonal principal
+    - Indica si la diagonal es capicúa o no
+    - No devuelve ningún valor
+    """
     fin=len(matriz)-1
     capicua=True
     diagonal = []
@@ -169,7 +256,18 @@ def simetrica_diagonal_principal(matriz):
         print(f"Su diagonal principal {diagonal} no es capicua")
 
 
-def simetrica_diagonal_secundaria(matriz):
+def simetrica_diagonal_secundaria(matriz: list) -> None:
+    """
+    Verifica si la diagonal secundaria de la matriz es capicúa y muestra el resultado
+
+    Pre:
+    - Recibe una matriz con valores numéricos
+
+    Post:
+    - Muestra la matriz completa y su diagonal secundaria
+    - Indica si la diagonal es capicúa o no
+    - No devuelve ningún valor
+    """
     fin=len(matriz)-1
     capicua=True
     diagonal = []
@@ -191,7 +289,19 @@ def simetrica_diagonal_secundaria(matriz):
 
 
 
-def columnas_capicua(matriz):
+def columnas_capicua(matriz: list) -> None:
+    """
+    Verifica qué columnas de la matriz son capicúas y las muestra por pantalla
+
+    Pre:
+    - Recibe una matriz cuadrada con valores numéricos
+
+    Post:
+    - Muestra la matriz completa
+    - Indica cuáles columnas son capicúas y las lista por número y contenido
+    - Si no hay columnas capicúas, muestra un mensaje correspondiente
+    - No devuelve ningún valor
+    """
     listas=[]
     indices=[]
     for i in range(len(matriz)):
@@ -214,7 +324,22 @@ def columnas_capicua(matriz):
     else:
         print("No hay columnas capicuas")
 
-def main():
+def main() -> None:
+    """
+    Función principal del programa que permite al usuario operar sobre una matriz
+    Muestra un menú con diferentes opciones y ejecuta la función correspondiente según la elección
+
+    Pre:
+    - No recibe parámetros
+    - El usuario debe ingresar un número entero positivo para definir el tamaño de la matriz
+    - El usuario debe seleccionar opciones válidas del menú
+
+    Post:
+    - Crea una matriz de tamaño n x n cargada por el usuario
+    - Ejecuta distintas operaciones sobre la matriz según la opción seleccionada
+    - Finaliza cuando el usuario ingresa 0
+    - No devuelve ningún valor
+    """
     menu =["","0. Salir","1. Filas ascendentes","2. Intercambiar filas","3. Intercambiar columnas","4. Trasponer matriz","5. Promedio por fila","6. Porcentaje de impares","7. Simétrica diagonal principal","8. Simétrica diagonal secundaria","9. Columnas capicúas"]
     opciones = {
         "1": filas_ascendentes,

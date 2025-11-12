@@ -3,7 +3,19 @@ número real. Devolver -1 si alguna de las cadenas no contiene un número válid
 utilizando manejo de excepciones para detectar el error."""
 
 
-def sumar_cadenas(n1, n2):
+def sumar_cadenas(n1, n2) -> int:
+    """
+    Suma dos valores convertidos a enteros si es posible
+
+    Pre:
+    - n1 y n2 son valores que se intentarán convertir a enteros
+    - Pueden ser cadenas numéricas o enteros
+
+    Post:
+    - Devuelve la suma de los dos números si la conversión es exitosa
+    - Devuelve -1 si alguno de los valores no puede convertirse a entero
+    """
+
     try:
         n1=int(n1)
         n2=int(n2)

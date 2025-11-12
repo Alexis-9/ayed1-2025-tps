@@ -5,7 +5,20 @@ debe utilizar manejo de excepciones para evitar errores si se ingresa un número
 negativo"""
 import math
 
-def funcion():
+def funcion() -> None:
+    """
+    Solicita al usuario un número entero positivo y muestra su raíz cuadrada
+
+    Pre:
+    - No recibe parámetros
+    - El usuario debe ingresar un número entero positivo
+
+    Post:
+    - Calcula e imprime por pantalla la raíz cuadrada del número ingresado
+    - Si el valor ingresado no es válido, vuelve a solicitar el número
+    - No devuelve ningún valor
+    """
+
     try:
         n = int(input("Número: "))
         raiz=math.sqrt(n)

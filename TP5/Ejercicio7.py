@@ -4,24 +4,44 @@ eso, cada vez que se introduce un valor se muestra un mensaje indicando si el n�
 adivinarlo, se debe imprimir en pantalla la cantidad de intentos que le tomó hallar
 el número. Si el usuario introduce algo que no sea un número se mostrará un
 mensaje en pantalla y se lo contará como un intento más."""
+
 import random as rn
-numero=rn.randint(1,500)
-intentos=0
 
-print("Adivina el número del 1 al 500")
-while True:
-    try:
-        n=int(input("N: "))
-        intentos+=1
-        if n==numero:
-            break
-        elif n>numero:
-            print(f"El número es menor que {n}")
-        else:
-            print(f"El número es mayor que {n}")
-    except ValueError:
-        intentos+=1
-        print("Debe ingresar un número entero, se sumo un intento")
+def adivinar_num() -> None:
+    """
+    Juego de adivinanza donde el usuario debe adivinar un número aleatorio del 1 al 500
 
-print(f"Correcto, el número era {numero}")
-print(f"Te tomó {intentos} intentos")
+    Pre:
+    - No recibe parámetros
+    - El usuario debe ingresar números enteros
+
+    Post:
+    - Genera un número aleatorio entre 1 y 500
+    - Solicita al usuario adivinar el número, indicando si el número ingresado es mayor o menor
+    - Cuenta y muestra la cantidad de intentos realizados, incluyendo los intentos inválidos
+    - Imprime por pantalla cuando se adivina correctamente
+    - No devuelve ningún valor
+    """
+
+    numero=rn.randint(1,500)
+    intentos=0
+
+    print("Adivina el número del 1 al 500")
+    while True:
+        try:
+            n=int(input("Ingrese un número: "))
+            intentos+=1
+            if n==numero:
+                break
+            elif n>numero:
+                print(f"El número es menor que {n}")
+            else:
+                print(f"El número es mayor que {n}")
+        except ValueError:
+            intentos+=1
+            print("Debe ingresar un número entero, se sumo un intento")
+
+    print(f"Correcto, el número era {numero}")
+    print(f"Te tomó {intentos} intentos")
+
+adivinar_num()

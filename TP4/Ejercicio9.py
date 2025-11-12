@@ -4,7 +4,19 @@ cadena con las palabras ordenadas según su longitud, dejando un espacio entre
 cada una. Los signos de puntuación no deben ser tenidos en cuenta al medir la
 longitud de las palabras, pero deberán conservarse en la cadena final."""
 
-def ordenar_por_longitud(cadena):
+def ordenar_por_longitud(cadena: str) -> str:
+    """
+    Ordena las palabras de una cadena según su longitud de menor a mayor,
+    ignorando signos de puntuación al contar los caracteres
+
+    Pre:
+    - cadena es una cadena de caracteres que puede incluir espacios y signos de puntuación
+
+    Post:
+    - Devuelve una nueva cadena con las palabras ordenadas por longitud de menor a mayor
+    - Los signos de puntuación se ignoran al contar la longitud de las palabras
+    """
+
     cantidad=0
     cantidades=[]
     frases=[]
@@ -37,7 +49,20 @@ def ordenar_por_longitud(cadena):
 
     return " ".join(frases)
 
-def main():
+def main() -> None:
+    """
+    Solicita una cadena al usuario y muestra sus palabras ordenadas por longitud
+
+    Pre:
+    - No recibe parámetros
+    - El usuario debe ingresar una cadena de texto que puede contener espacios y signos de puntuación
+
+    Post:
+    - Llama a la función ordenar_por_longitud para obtener la cadena ordenada
+    - Imprime por pantalla la cadena resultante con las palabras ordenadas de menor a mayor longitud
+    - No devuelve ningún valor
+    """
+
     cadena=input("Ingrese la cadena: ")
     nueva_cadena=ordenar_por_longitud(cadena)
     print(f"La cadena con sus palabras ordenadas por longitud: {nueva_cadena}")

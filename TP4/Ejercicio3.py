@@ -5,7 +5,13 @@ en posiciones impares de la clave maestra y la segunda con los dígitos ubicados
 posiciones pares. Los dígitos se numeran desde la izquierda. Ejemplo: Si clave
 maestra fuera 18293, la clave 1 sería 123 y la clave 2 sería 89."""
 
-def buscar_clave(clave):
+def buscar_clave(clave: str) -> None:
+    """
+    Separa una clave en dos partes alternando los caracteres y muestra ambas partes
+
+    Pre: recibe una cadena de caracteres que representa la clave
+    Post: imprime la primera parte y la segunda parte
+    """
     lista1=[]
     lista2=[]
     for uno in range(len(clave)):

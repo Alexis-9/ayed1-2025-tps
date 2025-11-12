@@ -6,7 +6,18 @@ a. Utilizando sólo ciclos normales
 b. Utilizando listas por comprensión
 c. Utilizando la función filter"""
 
-def filtrar_palabras_ciclos(frase, n):
+def filtrar_palabras_ciclos(frase: str, n: int) -> str:
+    """
+    Filtra las palabras de una frase que tienen al menos n caracteres usando un for
+
+    Pre:
+    - frase es una cadena de caracteres
+    - n es un entero positivo que indica la longitud mínima de las palabras a incluir
+
+    Post:
+    - Devuelve una cadena con las palabras que cumplen la condición, separadas por espacios
+    """
+
     palabras = frase.split()
     lista=[]
     for i in palabras:
@@ -14,14 +25,47 @@ def filtrar_palabras_ciclos(frase, n):
             lista.append(i)
     return " ".join(lista)
 
-def filtrar_palabras_comprension(frase, n):
+def filtrar_palabras_comprension(frase: str, n: int) -> str:
+    """
+    Filtra las palabras de una frase que tienen al menos n caracteres usando comprensión de listas
+
+    Pre:
+    - frase es una cadena de caracteres
+    - n es un entero positivo que indica la longitud mínima de las palabras a incluir
+
+    Post:
+    - Devuelve una cadena con las palabras que cumplen la condición, separadas por espacios
+    """
     return " ".join([x for x in frase.split() if len(x) >= n])
 
-def filtrar_palabras_filter(frase, n):
+def filtrar_palabras_filter(frase: str, n: int) -> str:
+    """
+    Filtra las palabras de una frase que tienen al menos n caracteres usando la función filter
+
+    Pre:
+    - frase es una cadena de caracteres
+    - n es un entero positivo que indica la longitud mínima de las palabras a incluir
+
+    Post:
+    - Devuelve una cadena con las palabras que cumplen la condición, separadas por espacios
+    """
     return " ".join(filter(lambda x: len(x) >= n, frase.split()))
 
 
-def main():
+def main() -> None:
+    """
+    Función principal que solicita una frase y un número mínimo de caracteres,
+    y muestra las palabras que cumplen la condición usando tres métodos distintos
+
+    Pre:
+    - No recibe parámetros
+    - El usuario debe ingresar una cadena de texto y un número entero positivo
+
+    Post:
+    - Muestra por pantalla las palabras de la frase que tienen al menos n caracteres
+      usando ciclos normales, comprensión de listas y la función filter
+    - No devuelve ningún valor
+    """
     frase = input("Ingrese una frase: ")
     n = int(input("Ingrese el mínimo de caracteres: "))
 

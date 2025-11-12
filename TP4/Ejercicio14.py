@@ -8,7 +8,20 @@ recordando que las direcciones de mail no distinguen mayúsculas ni minúsculas"
 
 def es_correo_valido(correo: str) -> str:
     """
+    Verifica si un correo electrónico tiene un formato válido según reglas básicas
+
+    Pre:
+    - correo es una cadena de caracteres que representa una dirección de correo electrónico
+
+    Post:
+    - Devuelve la parte del dominio si el correo es válido
+    - Devuelve una cadena vacía "" si el correo no cumple las condiciones de validez:
+        - Contiene exactamente un '@'
+        - La parte del usuario es alfanumérica
+        - No hay dominios vacíos entre puntos
+        - El dominio termina en '.com' o '.com.ar'
     """
+
     correo = correo.lower()
 
     if correo.count('@') != 1:
@@ -29,7 +42,23 @@ def es_correo_valido(correo: str) -> str:
 
     return dominio
 
-def main():
+def main() -> None:
+    """
+    Solicita direcciones de correo al usuario,
+    valida cada correo y muestra los dominios únicos ingresados
+
+    Pre:
+    - No recibe parámetros
+    - El usuario puede ingresar múltiples correos o presionar Enter para finalizar
+
+    Post:
+    - Llama a la función es_correo_valido para verificar cada correo ingresado
+    - Almacena los dominios válidos en un conjunto para evitar duplicados
+    - Imprime por pantalla la lista de dominios válidos ordenados alfabéticamente
+    - Indica si no se ingresaron correos válidos
+    - No devuelve ningún valor
+    """
+
     dominios = set()
 
     while True:

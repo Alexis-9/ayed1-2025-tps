@@ -11,21 +11,27 @@ mostrar el resultado.
 """
 
 
-def fecha(tupla,corte)->str:
+def fecha(tupla: tuple[int, int, int], corte: int) -> str:
     """
-    Verifica si una fecha es válida y si el año es bisiesto
-    pre: dia, mes, anio como números enteros
+    Convierte una tupla de fecha (día, mes, año) en un string legible y valida la fecha,
+    considerando años de dos dígitos según un corte
 
-    post:
-    Devuelve una tupla (valida, bisiesto):
-        valida (bool): True si la fecha es válida, False si no
-        bisiesto (int): 1 si el año es bisiesto, 0 si no lo es
+    Pre:
+    - tupla contiene tres enteros: (día, mes, año)
+    - corte es un entero que define el límite para interpretar años de dos dígitos
+    - El día debe ser positivo, el mes entre 1 y 12, y el año entero
+
+    Post:
+    - Devuelve un string con la fecha en formato 'día de Mes del año' si es válida
+    - Si la fecha es inválida, devuelve 'Fecha inválida'
+    - Considera años bisiestos para febrero
     """
+
+
     meses=["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 
     dia,mes,anio=tupla
 
-    bisiesto=0
     if anio <= 0:
         return "Fecha inválida"
 
@@ -54,7 +60,20 @@ def fecha(tupla,corte)->str:
         return f"La fecha es {dia} de {meses[mes-1]} del {anio}"
 
 
-def main():
+def main() -> None:
+    """
+    Solicita al usuario ingresar una fecha y la muestra en formato legible
+
+    Pre:
+    - No recibe parámetros
+    - El usuario debe ingresar números enteros para día, mes y año
+
+    Post:
+    - Llama a la función fecha para validar y formatear la fecha ingresada
+    - Imprime por pantalla la fecha en formato 'día de Mes del año' o un mensaje de error si es inválida
+    - No devuelve ningún valor
+    """
+
     dia = int(input("Ingrese el día: "))
     mes = int(input("Ingrese el mes: "))
     anio = int(input("Ingrese el año: "))

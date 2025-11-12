@@ -40,6 +40,7 @@ def fecha(dia:int, mes:int, anio:int)->tuple[bool,int]:
     else:
         return True, bisiesto
 
+
 def ingresar_valores()->tuple[int,int,int,int]:
     """
      Pide al usuario una fecha y devuelve la fecha validada junto con el indicador de bisiesto
@@ -60,6 +61,7 @@ def ingresar_valores()->tuple[int,int,int,int]:
     else:
         print("Error, la fecha es invalida")
         return ingresar_valores()
+
 
 def diasiguiente(dia:int, mes:int, anio:int,bisiesto:int)->tuple[int,int,int]:
     """
@@ -107,9 +109,19 @@ def sumar_dias(dia:int, mes:int, anio:int,bisiesto:int,n:int)->tuple[int,int,int
 
 
 
-def ingresar_horario()->tuple[int,int]:
+def ingresar_horario() -> tuple[int, int]:
     """
+    Solicita al usuario ingresar una hora y un minuto, validando que estén en rangos correctos
+
+    Pre:
+    - No recibe parámetros
+    - El usuario debe ingresar números enteros: hora (0-23) y minuto (0-59)
+
+    Post:
+    - Devuelve una tupla (hora, minuto) con los valores válidos ingresados
+    - Si el usuario ingresa valores fuera de rango, solicita nuevamente el ingreso
     """
+
     hora = int(input("Ingrese la hora de 0 a 23: "))
     minuto = int(input("Ingrese los minutos: "))
 
@@ -120,9 +132,18 @@ def ingresar_horario()->tuple[int,int]:
         return ingresar_horario()
 
 
-def diferencia_horarios(h1:int, m1:int, h2:int, m2:int)->tuple[int,int]:
+def diferencia_horarios(h1: int, m1: int, h2: int, m2: int) -> tuple[int, int]:
     """
+    Calcula la diferencia entre dos horarios expresados en horas y minutos
+
+    Pre:
+    - h1, h2 son horas válidas (0-23)
+    - m1, m2 son minutos válidos (0-59)
+
+    Post:
+    - Devuelve una tupla (horas, minutos) con la diferencia entre el segundo y el primer horario
     """
+
     minutos1 = h1 * 60 + m1
     minutos2 = h2 * 60 + m2
 
@@ -136,7 +157,21 @@ def diferencia_horarios(h1:int, m1:int, h2:int, m2:int)->tuple[int,int]:
     return horas, minutos
 
 
-def main():
+def main() -> None:
+    """
+    Realiza operaciones con fechas y horarios
+
+    Pre:
+    - No recibe parámetros
+    - El usuario debe ingresar valores válidos para fecha y horarios
+
+    Post:
+    - Solicita al usuario una fecha y un número de días para sumar, mostrando la nueva fecha
+    - Solicita dos horarios y calcula la diferencia entre ellos
+    - Imprime por pantalla la nueva fecha y la diferencia horaria
+    - No devuelve ningún valor
+    """
+
     dia, mes, anio, bisiesto = ingresar_valores()
     n = int(input("Cuántos días desea sumar: "))
     dia, mes, anio = sumar_dias(dia, mes, anio, bisiesto, n)

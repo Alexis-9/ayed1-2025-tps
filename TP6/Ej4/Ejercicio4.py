@@ -3,9 +3,12 @@ signo # (siempre que éste no se encuentre encerrado entre comillas simples o do
 (docstrings).
 """
 def eliminar_comentarios():
-    programa="prueba.txt" #input("Ingrese el nombre del programa de python: ")
-    with open(programa, "r", encoding="utf-8") as archivo:
-        lineas=archivo.readlines()
+    programa="prueba.txt"#input("Ingrese el nombre del programa de python: ")
+    try:
+        with open(programa, "r", encoding="utf-8") as archivo:
+            lineas=archivo.readlines()
+    except Exception:
+        print("No se encontro el archivo o esta vacío")
 
 
     comentario=False
@@ -37,8 +40,6 @@ def eliminar_comentarios():
                 linea_nueva+=caracter
 
 
-
-
         comentario=False
         entre_comillas=False
         sucesion=0
@@ -46,6 +47,7 @@ def eliminar_comentarios():
             nuevas_lineas.append("".join(linea_nueva).strip())
         linea_nueva=""
 
+    print("Comentarios eliminados")
 
     #Lo hice en otro archivo asi se ve la diferencía pero se podría hacer en el mismo archivo para que lo sobreescriba
     with open(f"{programa}_1", "w", encoding="utf-8") as archivo:

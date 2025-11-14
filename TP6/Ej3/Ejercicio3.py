@@ -1,4 +1,18 @@
-def GrabarRangoAlturas():
+def GrabarRangoAlturas() -> None:
+    """
+    Pide deportes y alturas de atletas y los guarda en un archivo de texto con un formato ordenado
+
+    Pre:
+    - No recibe parámetros
+    - El usuario debe ingresar nombres de deportes y alturas válidas
+    - Se crea o sobrescribe el archivo alturas.txt
+
+    Post:
+    - Genera un archivo alturas.txt con los deportes ingresados y las alturas de sus atletas
+    - Finaliza cuando el usuario ingresa 0 en deporte o 0 como altura de atleta
+    - No devuelve ningún valor
+    """
+
     with open("alturas.txt", "w", encoding="utf-8") as archivo:
         indice_deporte=0
         while True:
@@ -40,11 +54,24 @@ def GrabarRangoAlturas():
                 break
 
 
+def GrabarPromedio() -> None:
+    """
+    Lee las alturas registradas en alturas.txt, calcula el promedio por deporte y los guarda en un archivo
+
+    Pre:
+    - Debe existir un archivo alturas.txt con el formato generado por la función GrabarRangoAlturas()
+    - El archivo debe contener al menos un deporte con atletas para que haya promedios
+    - No recibe parámetros
 
 
+    Post:
+    - Calcula el promedio de alturas de cada deporte encontrado
+    - Muestra los promedios por pantalla
+    - Genera un archivo promedios.txt con los promedios calculados
+    - Si no hay datos válidos, crea un archivo vacío y avisa
+    - No devuelve ningún valor
+    """
 
-
-def GrabarPromedio():
     with open("alturas.txt", "r", encoding="utf-8") as archivo:
         lineas = archivo.readlines()
 
@@ -91,9 +118,23 @@ def GrabarPromedio():
             salida.write(f"{p}\n\n")
 
 
+def MostrarMasAltos() -> None:
+    """
+    Lee los promedios por deporte desde promedios.txt y muestra cuáles superan el promedio general
+
+    Pre:
+    - Debe existir un archivo promedios.txt con el formato generado por la función GrabarPromedio()
+    - El archivo debe contener al menos un deporte con su promedio de altura
+    - No recibe parámetros
 
 
-def MostrarMasAltos():
+    Post:
+    - Calcula el promedio general de alturas entre todos los deportes
+    - Muestra por pantalla qué deportes superan ese promedio y por cuánto
+    - Si no hay promedios cargados, lo informa
+    - No devuelve ningún valor
+    """
+
     with open("promedios.txt", "r", encoding="utf-8") as archivo:
         lineas = archivo.readlines()
 
@@ -134,8 +175,21 @@ def MostrarMasAltos():
             print(deportes)
 
 
+def main() -> None:
+    """
+    Carga alturas, calcula promedios y muestra los deportes que superan el promedio general
 
-def main():
+    Pre:
+    - Depende de que las funciones GrabarRangoAlturas, GrabarPromedio y MostrarMasAltos estén definidas correctamente
+    - No recibe parámetros
+
+
+    Post:
+    - Llama a las tres funciones principales del programa
+    - Imprime separadores despúes de cada función
+    - No devuelve ningún valor
+    """
+
     GrabarRangoAlturas()
     print("====================================================")
     GrabarPromedio()

@@ -9,56 +9,71 @@ Pérez, Juan –> ESPAÑA.TXT
 Smith, John –> descartar"""
 
 
-try:
-    arch = open('Nombres.txt', 'rt', encoding='utf-8')
-    armenia = open("ARMENIA.TXT", "wt", encoding="utf-8")
-    espania = open("ESPAÑA.TXT", "wt", encoding="utf-8")
-    italia = open("ITALIA.TXT", "wt", encoding="utf-8")
+def ordenar_apellidos() -> None:
+    """
+    Lee un archivo de nombres y apellidos, los clasifica según su terminación y los escribe en archivos separados
 
-    while True:
-        linea = arch.readline()
+    Pre:
+    - Debe existir un archivo llamado Nombres.txt con líneas en el formato apellido, nombre
+    - El archivo debe poder leerse correctamente
+    - No recibe parámetros
 
-        if not linea:
-            break
-        else:
-            apellido, nombre = linea.strip().split(',')
-            apellido = apellido.strip().lower()
-            nombre = nombre.strip()
-
-            if not apellido:
-                print("Error")
-            elif apellido.endswith("ian"):
-                armenia.write(f"{apellido.title()}, {nombre.title()}\n")
-            elif apellido.endswith("ez"):
-                espania.write(f"{apellido.title()}, {nombre.title()}\n")
-            elif apellido.endswith("ini"):
-                italia.write(f"{apellido.title()}, {nombre.title()}\n")
-
-
-
-except FileNotFoundError as msg:
-    print(f'No se encuentra el archivo: {msg}')
-except OSError as msg:
-    print(f'No se puede leer el archivo: {msg}')
-else:
-    print(f'Archivo leído correctamente\n')
-finally:
+    Post:
+    - Genera tres archivos: ARMENIA.TXT, ESPAÑA.TXT e ITALIA.TXT según la terminación del apellido
+    - Muestra por pantalla el contenido de cada archivo generado
+    - No devuelve ningún valor
+    """
     try:
-        arch.close()
-        armenia.close()
-        italia.close()
-        espania.close()
-    except NameError:
-        pass
+        arch = open('Nombres.txt', 'rt', encoding='utf-8')
+        armenia = open("ARMENIA.TXT", "wt", encoding="utf-8")
+        espania = open("ESPAÑA.TXT", "wt", encoding="utf-8")
+        italia = open("ITALIA.TXT", "wt", encoding="utf-8")
 
-with open("ARMENIA.TXT", "rt", encoding="utf-8") as arm:
-    print("Los apellidos que terminan en ian: ")
-    print(arm.read())
+        while True:
+            linea = arch.readline()
 
-with open("ESPAÑA.TXT", "rt", encoding="utf-8") as es:
-    print("Los apellidos que terminan en ez: ")
-    print(es.read())
-with open("ITALIA.TXT", "rt", encoding="utf-8") as it:
-    print("Los apellidos que terminan en ini: ")
-    print(it.read())
+            if not linea:
+                break
+            else:
+                apellido, nombre = linea.strip().split(',')
+                apellido = apellido.strip().lower()
+                nombre = nombre.strip()
 
+                if not apellido:
+                    print("Error")
+                elif apellido.endswith("ian"):
+                    armenia.write(f"{apellido.title()}, {nombre.title()}\n")
+                elif apellido.endswith("ez"):
+                    espania.write(f"{apellido.title()}, {nombre.title()}\n")
+                elif apellido.endswith("ini"):
+                    italia.write(f"{apellido.title()}, {nombre.title()}\n")
+
+
+
+    except FileNotFoundError as msg:
+        print(f'No se encuentra el archivo: {msg}')
+    except OSError as msg:
+        print(f'No se puede leer el archivo: {msg}')
+    else:
+        print(f'Archivo leído correctamente\n')
+    finally:
+        try:
+            arch.close()
+            armenia.close()
+            italia.close()
+            espania.close()
+        except NameError:
+            pass
+
+    with open("ARMENIA.TXT", "rt", encoding="utf-8") as arm:
+        print("Los apellidos que terminan en ian: ")
+        print(arm.read())
+
+    with open("ESPAÑA.TXT", "rt", encoding="utf-8") as es:
+        print("Los apellidos que terminan en ez: ")
+        print(es.read())
+    with open("ITALIA.TXT", "rt", encoding="utf-8") as it:
+        print("Los apellidos que terminan en ini: ")
+        print(it.read())
+
+ordenar_apellidos()

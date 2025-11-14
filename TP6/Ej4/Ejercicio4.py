@@ -2,7 +2,23 @@
 signo # (siempre que éste no se encuentre encerrado entre comillas simples o dobles) y que también se considera comentario a las cadenas de documentación
 (docstrings).
 """
-def eliminar_comentarios():
+
+def eliminar_comentarios() -> None:
+    """
+    Elimina comentarios de un archivo de Python
+
+    Pre:
+    - Debe existir un archivo con el nombre ingresado (#Yo use prueba.txt, deje comentado el input) y debe tener contenido
+    - Los comentarios se detectan con # si esta fuera de comillas o con triples comillas
+    - No recibe parámetros
+
+
+    Post:
+    - Crea un nuevo archivo con el nombre original más _1 sin los comentarios
+    - Muestra un mensaje avisando que los comentarios fueron eliminados
+    - No devuelve ningún valor
+    """
+
     programa="prueba.txt"#input("Ingrese el nombre del programa de python: ")
     try:
         with open(programa, "r", encoding="utf-8") as archivo:

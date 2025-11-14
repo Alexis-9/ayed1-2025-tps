@@ -1,0 +1,7 @@
+prueba 1 con comentario #comentario
+prueba 2 sin comentario asdasdasdas
+sin docstring
+"""con docstring"""
+#comentario
+"#no comentario"
+

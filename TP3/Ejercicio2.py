@@ -251,8 +251,21 @@ def punto_h(n: int) -> None:
 def punto_i(n: int) -> None:
     print("No la pude hacer")
 
-def main():
+def main() -> None:
+    """
+    Permite al usuario elegir y ejecutar diferentes patrones de matrices nxn
 
+    Pre:
+    - No recibe parámetros
+    - Pide al usuario que ingrese un número entero n mayor a 0 para el tamaño de las matrices
+    - Pide al usuario que elija qué patrón ejecutar
+
+    Post:
+    - Ejecuta la función relacionada al patrón elegido pasando n como tamaño de la matriz
+    - Muestra cada matriz por pantalla
+    - Permite repetir la elección hasta que el usuario ingrese 0
+    - No devuelve ningún valor
+    """
     opciones = {
         "a": punto_a,
         "b": punto_b,
@@ -264,8 +277,6 @@ def main():
         "h": punto_h,
         "i": punto_i
     }
-
-    patrones=["a","b","c","d","e","f","g","h","i"]
 
     while True:
         try:

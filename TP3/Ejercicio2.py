@@ -268,6 +268,7 @@ def main() -> None:
     - Permite repetir la elección hasta que el usuario ingrese 0
     - No devuelve ningún valor
     """
+
     opciones = {
         "a": punto_a,
         "b": punto_b,

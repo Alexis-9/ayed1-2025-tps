@@ -14,11 +14,15 @@ def dividir_archivo():
         except ValueError:
             print("Debe ingresar un número entero")
 
+
     nombre_archivo="prueba.txt"#input("Ingrese el nombre del archivo: ").strip()
 
     try:
         with open(nombre_archivo, "r", encoding="utf-8") as archivo:
             lineas = archivo.readlines()
+            if not lineas:
+                print("El archivo esta vacío")
+                return
 
         nombre = nombre_archivo.rsplit(".", 1)[0]
         largo=0

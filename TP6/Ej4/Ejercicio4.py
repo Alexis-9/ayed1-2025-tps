@@ -7,8 +7,12 @@ def eliminar_comentarios():
     try:
         with open(programa, "r", encoding="utf-8") as archivo:
             lineas=archivo.readlines()
+            if not lineas:
+                print("El archivo esta vacío")
+                return
     except Exception:
-        print("No se encontro el archivo o esta vacío")
+        print("No se encontró el archivo")
+        return
 
 
     comentario=False

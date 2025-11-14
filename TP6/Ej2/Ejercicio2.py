@@ -7,7 +7,13 @@ pudiera llevarse a cabo. Recordar que no se permite cargar el archivo completo e
 """
 
 def dividir_archivo():
-    max_caracteres=30#int(input("Ingrese la cantidad máxima de carácteres que puede tener una parte: "))
+    while True:
+        try:
+            max_caracteres=30#int(input("Ingrese la cantidad máxima de carácteres que puede tener una parte: "))
+            break
+        except ValueError:
+            print("Debe ingresar un número entero")
+
     nombre_archivo="prueba.txt"#input("Ingrese el nombre del archivo: ").strip()
 
     try:
@@ -31,6 +37,8 @@ def dividir_archivo():
                 parte_nueva = open(f"{nombre}_parte{parte}.txt", "w", encoding="utf-8")
                 parte_nueva.write(linea)
                 largo=caracteres
+
+        print("Archivo dividido correctamente")
 
     except Exception as e:
         print(f"Error al dividir archivo: {e}")

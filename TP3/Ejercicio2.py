@@ -251,6 +251,8 @@ def punto_h(n: int) -> None:
 def punto_i(n: int) -> None:
     print("No la pude hacer")
 
+
+
 def main() -> None:
     """
     Permite al usuario elegir y ejecutar diferentes patrones de matrices nxn

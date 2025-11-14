@@ -1,7 +1,18 @@
-n=4
-
 #Punto a
-def punto_a():
+def punto_a(n: int) -> None:
+    """
+    Genera y muestra una matriz n x n donde la diagonal principal tiene números impares consecutivos y el resto ceros
+
+    Pre:
+    - Recibe un número entero n
+    - n representa la cantidad de filas y columnas de la matriz
+
+    Post:
+    - Crea una matriz cuadrada con un patrón específico
+    - Muestra la matriz por pantalla
+    - No devuelve ningún valor
+    """
+
     matriz=[]
     num=1
     for i in range(n):
@@ -17,8 +28,22 @@ def punto_a():
     for fila in matriz:
         print(fila)
 
+
+
 #Punto b
-def punto_b():
+def punto_b(n: int) -> None:
+    """
+    Genera y muestra una matriz n x n donde la diagonal secundaria contiene potencias de 3 en orden descendente y el resto ceros
+
+    Pre:
+    - Recibe un número entero n
+    - n representa la cantidad de filas y columnas de la matriz
+
+    Post:
+    - Crea una matriz cuadrada con un patrón específico
+    - Muestra la matriz por pantalla
+    - No devuelve ningún valor
+    """
     matriz=[]
     num=3**(n-1)
     for i in range(n):
@@ -34,8 +59,21 @@ def punto_b():
     for fila in matriz:
         print(fila)
 
+
 #Punto c
-def punto_c():
+def punto_c(n: int) -> None:
+    """
+    Genera y muestra una matriz n x n tipo escalera con valores decrecientes y el resto ceros
+
+    Pre:
+    - Recibe un número entero n
+    - n representa la cantidad de filas y columnas de la matriz
+
+    Post:
+    - Crea una matriz cuadrada con un patrón específico
+    - Muestra la matriz por pantalla
+    - No devuelve ningún valor
+    """
     matriz = []
     num=n
     for i in range(n):
@@ -51,8 +89,21 @@ def punto_c():
     for fila in matriz:
         print(fila)
 
+
 #Punto d
-def punto_d():
+def punto_d(n: int) -> None:
+    """
+    Genera y muestra una matriz n x n donde cada fila tiene un mismo número y ese valor se va dividiendo por 2 en cada fila
+
+    Pre:
+    - Recibe un número entero n
+    - n representa la cantidad de filas y columnas de la matriz
+
+    Post:
+    - Crea una matriz cuadrada con un patrón específico
+    - Muestra la matriz por pantalla
+    - No devuelve ningún valor
+    """
     matriz = []
     num = 2**(n-1)
     for i in range(n):
@@ -65,8 +116,21 @@ def punto_d():
     for fila in matriz:
         print(fila)
 
+
 #Punto e
-def punto_e():
+def punto_e(n: int) -> None:
+    """
+    Genera y muestra una matriz n x n donde solo se rellenan con números consecutivos las posiciones cuya suma de índices es impar
+
+    Pre:
+    - Recibe un número entero n
+    - n representa la cantidad de filas y columnas de la matriz
+
+    Post:
+    - Crea una matriz cuadrada con un patrón específico
+    - Muestra la matriz por pantalla
+    - No devuelve ningún valor
+    """
     matriz = []
     num = 1
     for i in range(n):
@@ -85,7 +149,19 @@ def punto_e():
 
 
 #Punto f
-def punto_f():
+def punto_f(n: int) -> None:
+    """
+    Genera y muestra una matriz n x n tipo escalera invertida y el resto con ceros
+
+    Pre:
+    - Recibe un número entero n
+    - n representa la cantidad de filas y columnas de la matriz
+
+    Post:
+    - Crea una matriz cuadrada con un patrón específico
+    - Muestra la matriz por pantalla
+    - No devuelve ningún valor
+    """
     matriz = []
     num = 1
 
@@ -104,7 +180,19 @@ def punto_f():
         print(fila)
 
 #Punto g
-def punto_g():
+def punto_g(n: int) -> None:
+    """
+    Genera y muestra una matriz n x n espiralada
+
+    Pre:
+    - Recibe un número entero n
+    - n representa la cantidad de filas y columnas de la matriz
+
+    Post:
+    - Crea una matriz cuadrada con un patrón específico
+    - Muestra la matriz por pantalla
+    - No devuelve ningún valor
+    """
     matriz=[]
     for i in range(n):
         fila=[]
@@ -142,15 +230,70 @@ def punto_g():
         print(fila)
 
 #Punto h
-def punto_h():
-    pass
+def punto_h(n: int) -> None:
+    """
+    Genera y muestra una matriz n x n llena por diagonales, de arriba a la izquierda hacia abajo a la derecha
 
 
-    for fila in matriz:
-        print(fila)
+    Pre:
+    - Recibe un número entero n
+    - n representa la cantidad de filas y columnas de la matriz
+
+    Post:
+    - Crea una matriz cuadrada con un patrón específico
+    - Muestra la matriz por pantalla
+    - No devuelve ningún valor
+    """
+
+    print("No la pude hacer")
 
 #Punto i
-def punto_i():
-    pass
+def punto_i(n: int) -> None:
+    print("No la pude hacer")
 
-punto_h()
+def main():
+
+    opciones = {
+        "a": punto_a,
+        "b": punto_b,
+        "c": punto_c,
+        "d": punto_d,
+        "e": punto_e,
+        "f": punto_f,
+        "g": punto_g,
+        "h": punto_h,
+        "i": punto_i
+    }
+
+    patrones=["a","b","c","d","e","f","g","h","i"]
+
+    while True:
+        try:
+            n = int(input("Ingrese de cuantas filas y columnas sera la matriz: "))
+            if n<0:
+                print("Debe ser un número mayor a 0")
+            else:
+                break
+        except ValueError:
+            print("Debe ingresar un número entero")
+
+    while True:
+        print("\nSeleccione el patrón que desea ver:")
+        for key in opciones:
+            print(f"{key}: Patrón {key}")
+        print("0: Salir")
+
+        opcion = input("Ingrese su opción: ").strip()
+
+        if opcion == "0":
+            break
+        elif opcion in opciones:
+            print(f"=========== PATRÓN {opcion} ===========")
+            opciones[opcion](n)
+            print("========================================")
+            input("ENTER para continuar al menú")
+        else:
+            print("Opción incorrecta")
+
+if __name__ == '__main__':
+    main()

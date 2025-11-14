@@ -10,10 +10,10 @@ Smith, John –> descartar"""
 
 
 try:
-    arch = open('Ej1/Nombres.txt', 'rt', encoding='utf-8')
-    armenia = open("Ej1/ARMENIA.TXT", "wt", encoding="utf-8")
-    espania = open("Ej1/ESPAÑA.TXT", "wt", encoding="utf-8")
-    italia = open("Ej1/ITALIA.TXT", "wt", encoding="utf-8")
+    arch = open('Nombres.txt', 'rt', encoding='utf-8')
+    armenia = open("ARMENIA.TXT", "wt", encoding="utf-8")
+    espania = open("ESPAÑA.TXT", "wt", encoding="utf-8")
+    italia = open("ITALIA.TXT", "wt", encoding="utf-8")
 
     while True:
         linea = arch.readline()
@@ -51,14 +51,14 @@ finally:
     except NameError:
         pass
 
-with open("Ej1/ARMENIA.TXT","rt",encoding="utf-8") as arm:
+with open("ARMENIA.TXT", "rt", encoding="utf-8") as arm:
     print("Los apellidos que terminan en ian: ")
     print(arm.read())
 
-with open("Ej1/ESPAÑA.TXT","rt",encoding="utf-8") as es:
+with open("ESPAÑA.TXT", "rt", encoding="utf-8") as es:
     print("Los apellidos que terminan en ez: ")
     print(es.read())
-with open("Ej1/ITALIA.TXT","rt",encoding="utf-8") as it:
+with open("ITALIA.TXT", "rt", encoding="utf-8") as it:
     print("Los apellidos que terminan en ini: ")
     print(it.read())
 
